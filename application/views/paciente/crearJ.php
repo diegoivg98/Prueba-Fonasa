@@ -39,13 +39,13 @@
 
 								<div class="mb-3">
 									<label for="" class="form-label">NOMBRE</label>
-									<input onkeypress="return sololetras(event)" placeholder="Ingrese nombre del paciente" type="text" id="nombre" name="nombre" class="form-control">
+									<input required onkeypress="return sololetras(event)" placeholder="Ingrese nombre del paciente" type="text" id="nombre" name="nombre" class="form-control">
 									<?php echo form_error("nombre", "<span class='help-block'>", "</span>"); ?>
 								</div>
 
 								<div class="mb-3">
 									<label for="" class="form-label">EDAD (16-40)</label>
-									<input min="16" max="40" placeholder="Ingrese edad del paciente" type="number" id="edad" name="edad" class="form-control">
+									<input min="16" max="40" placeholder="Ingrese edad del paciente" type="number" id="edad" name="edad" class="form-control" required>
 									<?php echo form_error("edad", "<span class='help-block'>", "</span>"); ?>
 								</div>
 
@@ -56,32 +56,63 @@
 
 								<div class="mb-3">
 									<label for="Pefil">¿ES FUMADOR?:</label>
-									<select onchange="carg(this)" ; onselect="calpriori()" name="fumador" id="fumador" class="form-control">
-										<option value="1">SI</option>
-										<option value="0">NO</option>
+									<select name="fumador" id="fumador" class="form-control">
+										<option value="si">SI</option>
+										<option value="no">NO</option>
 									</select>
 								</div>
 
 								<div class="mb-3">
 									<label for="" class="form-label">AÑOS FUMADOR</label>
-									<input oninput="calpriori(),calriesgo()" min="0" max="99" placeholder="Ingrese cuantos años lleva fumando" type="number" id="años_fumador" name="años_fumador" class="form-control">
+									<input min="1" placeholder="Ingrese cuantos años lleva fumando" type="number" id="años_fumador" name="años_fumador" class="form-control">
 									<?php echo form_error("años_fumador", "<span class='help-block'>", "</span>"); ?>
 								</div>
 
 								<div class="mb-3">
 									<label for="">PRIORIDAD</label>
-									<input readonly type="number" name="prioridad" id="prioridad" class="form-control">
+									<input readonly type="number" name="prioridad" id="prioridad" class="form-control" required>
 									<?php echo form_error("prioridad", "<span class='help-block'>", "</span>"); ?>
 								</div>
 
 								<div class="mb-3">
 									<label for="">RIESGO</label>
-									<input readonly type="number" name="riesgo" id="riesgo" class="form-control">
+									<input readonly type="number" name="riesgo" id="riesgo" class="form-control" required>
 									<?php echo form_error("riesgo", "<span class='help-block'>", "</span>"); ?>
 								</div>
 
 								<button type="submit" class="btn btn-primary">INGRESAR</button>
 							</form>
+							<script>
+								const edadInput = document.getElementById("edad");
+								const aniosFumadorInput = document.getElementById("años_fumador");
+								const fumadorInput = document.getElementById("fumador");
+								const prioridadInput = document.getElementById("prioridad");
+								const riesgoInput = document.getElementById("riesgo");
+
+								// Función que se ejecuta cuando se cambia algún campo
+								function calcular() {
+									const edad = parseInt(edadInput.value);
+									const aniosFumador = parseInt(aniosFumadorInput.value);
+									const esFumador = fumadorInput.value === "si";
+
+									let prioridad;
+									if (esFumador) {
+										prioridad = aniosFumador / 4 + 2;
+									} else {
+										prioridadInput.value = 0;
+										prioridad = 2;
+									}
+									prioridadInput.value = prioridad;
+
+									const riesgo = (edad * prioridad) / 100;
+									riesgoInput.value = riesgo;
+								}
+
+								// Escuchar los eventos de cambio en los campos
+								edadInput.addEventListener("change", calcular);
+								aniosFumadorInput.addEventListener("change", calcular);
+								fumadorInput.addEventListener("change", calcular);
+							</script>
 						</div>
 						<div class="card-footer text-muted">
 							Footer
@@ -107,4 +138,17 @@
 	}
 
 	document.getElementById("num_historiaclinica").value = randomNumber(9);
+</script>
+
+<script>
+	fumadorInput.addEventListener('change', () => {
+		if (fumadorInput.value === 'no') {
+			aniosFumadorInput.value = 0;
+			aniosFumadorInput.setAttribute('readonly', 'readonly');
+		} else {
+			aniosFumadorInput.value = '';
+			aniosFumadorInput.removeAttribute('readonly');
+		}
+		calcular();
+	});
 </script>
