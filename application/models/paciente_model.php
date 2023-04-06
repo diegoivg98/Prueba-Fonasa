@@ -32,7 +32,7 @@ class paciente_model extends CI_Model
   {
     $this->db->select('*');
     $this->db->from('paciente');
-    $this->db->order_by('riesgo', 'DESC');
+    $this->db->order_by('riesgo', 'desc');
     $query4 = $this->db->get();
     return $query4->result();
   }
