@@ -32,7 +32,6 @@
                   <th scope="col">NOMBRE</th>
                   <th scope="col">EDAD</th>
                   <th scope="col">NHC</th>
-                  <th scope="col">HOSPITAL</th>
                   <th scope="col">RIESGO</th>
                 </tr>
               </thead>
@@ -43,7 +42,6 @@
                       <td><?php echo $row->nombre;?></td>
                       <td><?php echo $row->edad;?></td>
                       <td><?php echo $row->num_historiaclinica;?></td>
-                      <td><?php echo $row->nom_hospital;?></td>
                       <td><?php echo $row->riesgo;?></td>
                     </tr>
                   <?php endforeach;?>
