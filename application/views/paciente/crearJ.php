@@ -1,19 +1,5 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-	<!-- Content Header (Page header) -->
-	<div class="content-header">
-		<div class="container-fluid">
-			<div class="row mb-2">
-				<div class="col-sm-6">
-
-				</div><!-- /.col -->
-				<div class="col-sm-6">
-				</div><!-- /.col -->
-			</div><!-- /.row -->
-		</div><!-- /.container-fluid -->
-	</div>
-	<!-- /.content-header -->
-
 	<!-- Main content -->
 	<section class="content">
 		<div class="container-fluid">
@@ -82,37 +68,6 @@
 
 								<button type="submit" class="btn btn-primary">INGRESAR</button>
 							</form>
-							<script>
-								const edadInput = document.getElementById("edad");
-								const aniosFumadorInput = document.getElementById("años_fumador");
-								const fumadorInput = document.getElementById("fumador");
-								const prioridadInput = document.getElementById("prioridad");
-								const riesgoInput = document.getElementById("riesgo");
-
-								// Función que se ejecuta cuando se cambia algún campo
-								function calcular() {
-									const edad = parseInt(edadInput.value);
-									const aniosFumador = parseInt(aniosFumadorInput.value);
-									const esFumador = fumadorInput.value === "si";
-
-									let prioridad;
-									if (esFumador) {
-										prioridad = aniosFumador / 4 + 2;
-									} else {
-										prioridadInput.value = 0;
-										prioridad = 2;
-									}
-									prioridadInput.value = prioridad;
-
-									const riesgo = (edad * prioridad) / 100;
-									riesgoInput.value = riesgo;
-								}
-
-								// Escuchar los eventos de cambio en los campos
-								edadInput.addEventListener("change", calcular);
-								aniosFumadorInput.addEventListener("change", calcular);
-								fumadorInput.addEventListener("change", calcular);
-							</script>
 						</div>
 						<div class="card-footer text-muted">
 							Footer
@@ -126,16 +81,4 @@
 <!-- /.content-wrapper -->
 
 <script src="<?=base_url()?>application/views/js/randomNumber.js" type="text/javascript" charset="utf-8"></script>
-
-<script>
-	fumadorInput.addEventListener('change', () => {
-		if (fumadorInput.value === 'no') {
-			aniosFumadorInput.value = 0;
-			aniosFumadorInput.setAttribute('readonly', 'readonly');
-		} else {
-			aniosFumadorInput.value = '';
-			aniosFumadorInput.removeAttribute('readonly');
-		}
-		calcular();
-	});
-</script>
+<script src="<?=base_url()?>application/views/js/calculojoven.js" type="text/javascript" charset="utf-8"></script>
