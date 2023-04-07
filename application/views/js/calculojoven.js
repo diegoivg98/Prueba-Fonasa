@@ -23,6 +23,17 @@ function calcular() {
 	riesgoInput.value = riesgo;
 }
 
+fumadorInput.addEventListener("change", () => {
+	if (fumadorInput.value === "no") {
+		aniosFumadorInput.value = 0;
+		aniosFumadorInput.setAttribute("readonly", "readonly");
+	} else {
+		aniosFumadorInput.value = "";
+		aniosFumadorInput.removeAttribute("readonly");
+	}
+	calcular();
+});
+
 // Escuchar los eventos de cambio en los campos
 edadInput.addEventListener("change", calcular);
 aniosFumadorInput.addEventListener("change", calcular);
