@@ -1,13 +1,8 @@
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-	<!-- Main content -->
 	<section class="content">
 		<div class="container-fluid">
-			<!-- SELECT2 EXAMPLE -->
 			<div class="card card-default">
 
-				<!-- /.card-header -->
-				<!-- /.card-body -->
 				<br>
 				<div class="col-md-12">
 					<div class="card">
@@ -105,17 +100,4 @@
 </div>
 <!-- /.content-wrapper -->
 
-<script>
-	function randomNumber(len) {
-		var randomNumber;
-		var n = '';
-
-		for (var count = 0; count < len; count++) {
-			randomNumber = Math.floor(Math.random() * 10);
-			n += randomNumber.toString();
-		}
-		return n;
-	}
-
-	document.getElementById("num_historiaclinica").value = randomNumber(9);
-</script>
+<script src="<?=base_url()?>application/views/js/randomNumber.js" type="text/javascript" charset="utf-8"></script>
