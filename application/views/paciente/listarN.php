@@ -1,61 +1,43 @@
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <div class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-                  <h5 class="mb-0 text-gray-800">Listado Paciente-Niño/a
-                  <a href=" <?php echo base_url();?>pacientes/addnino" type="button" class="btn btn-primary">
-            <span class="fa fa-plus"></span> Agregar Paciente</a>
-            </h5>
-        </div><!-- /.col -->
-       
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
+	<div class="container-fluid">
+  <div class="row mb-3">
+    <div class="col">
+      <h2 class="text-primary">Listado Paciente-Niño/a</h2>
+    </div>
+    <div class="col-auto">
+      <a href="<?php echo base_url(); ?>pacientes/addnino" class="btn btn-primary">
+        <i class="fa fa-plus me-2"></i> Agregar Paciente
+      </a>
+    </div>
   </div>
-  <!-- /.content-header -->
 
-  <!-- Main content -->
-  <section class="content">
-    <div class="container-fluid">
-      <!-- SELECT2 EXAMPLE -->
-      <div class="card card-default">
-       
-        <!-- /.card-header -->
-        <!-- /.card-body -->
-        <br>  
-        <div class="col-md-12">   
-          <div class="table-responsive">
-
-            <table class="table table-bordered" id="mydatatable">
-              <thead>
-                <tr style="background-color: #f41e3c">
-                  <th scope="col">NOMBRE</th>
-                  <th scope="col">EDAD</th>
-                  <th scope="col">NUMERO-HISTORIA-CLINICA</th>
-                  <th scope="col">PRIORIDAD</th>
-                  <th scope="col">RIESGO</th>
+  <div class="card">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover" id="mydatatable">
+          <thead>
+            <tr class="bg-danger text-white">
+              <th>NOMBRE</th>
+              <th>EDAD</th>
+              <th>NUMERO-HISTORIA-CLINICA</th>
+              <th>PRIORIDAD</th>
+              <th>RIESGO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php if(!empty($query)): ?>
+              <?php foreach($query as $row): ?>
+                <tr>
+                  <td><?php echo $row->nombre; ?></td>
+                  <td><?php echo $row->edad; ?></td>
+                  <td><?php echo $row->num_historiaclinica; ?></td>
+                  <td><?php echo $row->prioridad; ?></td>
+                  <td><?php echo $row->riesgo; ?></td>
                 </tr>
-              </thead>
-              <tbody>
-              <?php if(!empty($query)):?>
-                  <?php foreach($query as $row):?>
-                    <tr>
-                      <td><?php echo $row->nombre;?></td>
-                      <td><?php echo $row->edad;?></td>
-                      <td><?php echo $row->num_historiaclinica;?></td>
-                      <td><?php echo $row->prioridad;?></td>
-                      <td><?php echo $row->riesgo;?></td>
-                    </tr>
-                  <?php endforeach;?>
-                <?php endif;?>
-              </tbody>
-            </table>
-          </div>
-        </div>
+              <?php endforeach; ?>
+            <?php endif; ?>
+          </tbody>
+        </table>
       </div>
     </div>
-    <!-- /.card -->
   </div>
-  <!-- /.content-wrapper -->
+</div>
