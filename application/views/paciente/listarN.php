@@ -10,8 +10,7 @@
             <span class="fa fa-plus"></span> Agregar Paciente</a>
             </h5>
         </div><!-- /.col -->
-        <div class="col-sm-6">
-        </div><!-- /.col -->
+       
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
@@ -34,7 +33,7 @@
                 <tr style="background-color: #f41e3c">
                   <th scope="col">NOMBRE</th>
                   <th scope="col">EDAD</th>
-                  <th scope="col">NHC</th>
+                  <th scope="col">NUMERO-HISTORIA-CLINICA</th>
                   <th scope="col">PRIORIDAD</th>
                   <th scope="col">RIESGO</th>
                 </tr>
