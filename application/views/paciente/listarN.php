@@ -1,9 +1,9 @@
-	<div class="container-fluid">
+<div class="container-fluid">
   <div class="row mb-3">
-    <div class="col">
+    <div class="col-md-8">
       <h2 class="text-primary">Listado Paciente-Niño/a</h2>
     </div>
-    <div class="col-auto">
+    <div class="col-md-4 text-end">
       <a href="<?php echo base_url(); ?>pacientes/addnino" class="btn btn-primary">
         <i class="fa fa-plus me-2"></i> Agregar Paciente
       </a>
