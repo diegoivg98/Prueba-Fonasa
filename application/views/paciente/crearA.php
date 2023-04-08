@@ -1,27 +1,7 @@
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-	<!-- Content Header (Page header) -->
-	<div class="content-header">
-		<div class="container-fluid">
-			<div class="row mb-2">
-				<div class="col-sm-6">
-
-				</div><!-- /.col -->
-				<div class="col-sm-6">
-				</div><!-- /.col -->
-			</div><!-- /.row -->
-		</div><!-- /.container-fluid -->
-	</div>
-	<!-- /.content-header -->
-
-	<!-- Main content -->
 	<section class="content">
 		<div class="container-fluid">
-			<!-- SELECT2 EXAMPLE -->
 			<div class="card card-default">
-
-				<!-- /.card-header -->
-				<!-- /.card-body -->
 				<br>
 				<div class="col-md-12">
 					<div class="card">
@@ -75,52 +55,6 @@
 
 								<button type="submit" class="btn btn-primary">INGRESAR</button>
 							</form>
-							<script>
-								const edadInput = document.getElementById('edad');
-								const dietaInput = document.getElementById('tiene_dieta');
-								const prioridadInput = document.getElementById('prioridad');
-								const riesgoInput = document.getElementById('riesgo');
-
-								function calcularPrioridad() {
-									const edad = parseInt(edadInput.value);
-									const tieneDieta = dietaInput.value === 'si';
-
-									if (tieneDieta) {
-										if (edad < 60 || edad > 100) {
-											alert('Si tiene dieta, la edad debe estar entre 60 y 100 años');
-											prioridadInput.value = '';
-											riesgoInput.value = '';
-											document.getElementById('submitBtn').disabled = true;
-											return;
-										}
-									}
-
-									let prioridad = 0;
-									if (tieneDieta && edad >= 60 && edad <= 100) {
-										prioridad = (edad / 20) + 4;
-									} else {
-										prioridad = (edad / 30) + 3;
-									}
-
-									// redondea el valor de prioridad a 2 decimales
-									prioridadInput.value = prioridad.toFixed(2);
-
-									calcularRiesgo();
-								}
-
-
-
-								function calcularRiesgo() {
-									const edad = parseInt(edadInput.value);
-									const prioridad = parseInt(prioridadInput.value);
-
-									riesgoInput.value = (edad * prioridad) / 100 + 5.3;
-								}
-
-								edadInput.addEventListener('change', calcularPrioridad);
-								dietaInput.addEventListener('change', calcularPrioridad);
-							</script>
-
 						</div>
 						<div class="card-footer text-muted">
 							Footer
@@ -129,8 +63,7 @@
 				</div>
 			</div>
 		</div>
-		<!-- /.card -->
 </div>
-<!-- /.content-wrapper -->
 
 <script src="<?=base_url()?>application/views/js/randomNumber.js" type="text/javascript" charset="utf-8"></script>
+<script src="<?=base_url()?>application/views/js/calculoadulto.js" type="text/javascript" charset="utf-8"></script>
