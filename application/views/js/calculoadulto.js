@@ -1,41 +1,26 @@
-const edadInput = document.getElementById("edad");
-const dietaInput = document.getElementById("tiene_dieta");
-const prioridadInput = document.getElementById("prioridad");
-const riesgoInput = document.getElementById("riesgo");
+  // Función para calcular la prioridad y riesgo
+  function calcular() {
+	var edad = document.getElementById('edad').value;
+	var tiene_dieta = document.getElementById('tiene_dieta').value;
+	var prioridad = 0;
+	var riesgo = 0;
 
-function calcularPrioridad() {
-	const edad = parseInt(edadInput.value);
-	const tieneDieta = dietaInput.value === "si";
-
-	if (tieneDieta) {
-		if (edad < 60 || edad > 100) {
-			alert("Si tiene dieta, la edad debe estar entre 60 y 100 años");
-			prioridadInput.value = "";
-			riesgoInput.value = "";
-			document.getElementById("submitBtn").disabled = true;
-			return;
+	if (tiene_dieta == 'si') {
+		if (edad >= 60 && edad <= 100) {
+			prioridad = edad/20 + 4;
+		} else {
+			prioridad = edad/30 + 3;
 		}
-	}
-
-	let prioridad = 0;
-	if (tieneDieta && edad >= 60 && edad <= 100) {
-		prioridad = edad / 20 + 4;
 	} else {
-		prioridad = edad / 30 + 3;
+		prioridad = edad/30 + 3;
 	}
 
-	// redondea el valor de prioridad a 2 decimales
-	prioridadInput.value = prioridad.toFixed(2);
+	riesgo = (edad * prioridad)/100 + 5.3;
 
-	calcularRiesgo();
+	document.getElementById('prioridad').value = prioridad.toFixed(2);
+	document.getElementById('riesgo').value = riesgo.toFixed(2);
 }
 
-function calcularRiesgo() {
-	const edad = parseInt(edadInput.value);
-	const prioridad = parseInt(prioridadInput.value);
-
-	riesgoInput.value = (edad * prioridad) / 100 + 5.3;
-}
-
-edadInput.addEventListener("change", calcularPrioridad);
-dietaInput.addEventListener("change", calcularPrioridad);
+// Llamada a la función cuando se cambie la edad o tenga dieta
+document.getElementById('edad').addEventListener('change', calcular);
+document.getElementById('tiene_dieta').addEventListener('change', calcular);
