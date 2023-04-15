@@ -1,40 +1,27 @@
-const edadInput = document.getElementById("edad");
-const aniosFumadorInput = document.getElementById("años_fumador");
-const fumadorInput = document.getElementById("fumador");
-const prioridadInput = document.getElementById("prioridad");
-const riesgoInput = document.getElementById("riesgo");
+  function calcularPrioridad() {
+    var fumador = document.getElementById("fumador").value;
+    var añosFumador = document.getElementById("años_fumador").value;
 
-// Función que se ejecuta cuando se cambia algún campo
-function calcular() {
-	const edad = parseInt(edadInput.value);
-	const aniosFumador = parseInt(aniosFumadorInput.value);
-	const esFumador = fumadorInput.value === "si";
+    if (fumador == "si") {
+      var prioridad = añosFumador / 4 + 2;
+    } else {
+      var prioridad = 2;
+    }
 
-	let prioridad;
-	if (esFumador) {
-		prioridad = aniosFumador / 4 + 2;
-	} else {
-		prioridadInput.value = 0;
-		prioridad = 2;
-	}
-	prioridadInput.value = prioridad;
+    document.getElementById("prioridad").value = prioridad;
+    calcularRiesgo();
+  }
 
-	const riesgo = (edad * prioridad) / 100;
-	riesgoInput.value = riesgo;
-}
+  function calcularRiesgo() {
+    var edad = document.getElementById("edad").value;
+    var prioridad = document.getElementById("prioridad").value;
 
-fumadorInput.addEventListener("change", () => {
-	if (fumadorInput.value === "no") {
-		aniosFumadorInput.value = 0;
-		aniosFumadorInput.setAttribute("readonly", "readonly");
-	} else {
-		aniosFumadorInput.value = "";
-		aniosFumadorInput.removeAttribute("readonly");
-	}
-	calcular();
-});
+    var riesgo = (edad * prioridad) / 100;
 
-// Escuchar los eventos de cambio en los campos
-edadInput.addEventListener("change", calcular);
-aniosFumadorInput.addEventListener("change", calcular);
-fumadorInput.addEventListener("change", calcular);
+    document.getElementById("riesgo").value = riesgo;
+  }
+
+  document.getElementById("edad").addEventListener("input", calcularRiesgo);
+  document.getElementById("fumador").addEventListener("change", calcularPrioridad);
+  document.getElementById("años_fumador").addEventListener("input", calcularPrioridad);
+
