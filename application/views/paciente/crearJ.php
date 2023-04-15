@@ -41,7 +41,7 @@
 
 						<div class="mb-3">
 							<label for="" class="form-label">AÑOS FUMADOR</label>
-							<input min="1" placeholder="Ingrese cuantos años lleva fumando" type="number" id="años_fumador" name="años_fumador" class="form-control">
+							<input min="0" placeholder="Ingrese cuantos años lleva fumando" type="number" id="años_fumador" name="años_fumador" class="form-control">
 							<?php echo form_error("años_fumador", "<span class='help-block'>", "</span>"); ?>
 						</div>
 
