@@ -28,6 +28,7 @@
 					<a class="dropdown-item" href="<?php echo base_url(); ?>pacientes/list_A">ANCIANOS</a>
 					<a class="dropdown-item" href="<?php echo base_url(); ?>pacientes/list_riesgo">MAYOR RIESGO</a>
 					<a class="dropdown-item" href="<?php echo base_url(); ?>pacientes/list_fum">FUMADORES</a>
+					<a class="dropdown-item" href="<?php echo base_url(); ?>pacientes/list_mas_anciano">MAS ANCIANO</a>
 				</div>
 			</li>
 		</ul>
