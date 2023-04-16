@@ -46,6 +46,15 @@ class paciente_model extends CI_Model
     return $query5->result();
   }
 
+	public function getpacientemasanciano()
+  {
+    $this->db->select('*');
+    $this->db->from('paciente');
+    $this->db->order_by('edad', 'desc');
+    $query6 = $this->db->get();
+    return $query6->result();
+  }
+
   public function guardar($data)
   {
     return $this->db->insert('paciente', $data); //INSERT INTO hospital
