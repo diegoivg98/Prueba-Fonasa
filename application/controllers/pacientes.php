@@ -48,6 +48,14 @@ class pacientes extends CI_Controller
 		$this->load->view("paciente/listarfum", $data5);
 	}
 
+	public function list_mas_anciano()
+	{
+		$data6 = array('query6' => $this->paciente_model->getpacientemasanciano(),);
+		$this->load->view("template/header");
+		$this->load->view("template/footer");
+		$this->load->view("paciente/listarMasAnciano", $data6);
+	}
+
 	public function addnino()
 	{
 		$this->load->view("template/header");
